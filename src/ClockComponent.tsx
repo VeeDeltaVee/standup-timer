@@ -22,7 +22,7 @@ export const Clock = ({displayedTime, labelText}: ClockProps): JSX.Element => {
   return (
     <Stack horizontalAlign="center">
       <Label>{labelText}</Label>
-      <Text variant='xLarge' > {displayedTimeString} </Text>
+      <Text variant='mega' > {displayedTimeString} </Text>
     </Stack>
   );
 }

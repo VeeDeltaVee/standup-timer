@@ -1,4 +1,4 @@
-import { getTheme, ITheme, Stack, ProgressIndicator, PrimaryButton, DefaultButton, TextField, SpinButton } from '@fluentui/react';
+import { getTheme, ITheme, Stack, ProgressIndicator, PrimaryButton, DefaultButton, TextField, SpinButton, StackItem } from '@fluentui/react';
 import React, { useState, useEffect } from 'react';
 import { useInterval } from 'react-interval-hook';
 import { Clock } from './ClockComponent';
@@ -54,7 +54,7 @@ export const ScrumTimer = (): JSX.Element => {
                 min={15}
                 max={600}
               />
-              <PrimaryButton text="Start Scrum" onClick={() => { 
+              <PrimaryButton text="Start Scrum" onClick={() => {
                 setScrumState(ScrumState.Running);
                 setTeamStartTime(new Date());
                 setCurrentSpeakerStartTime(new Date());
@@ -65,7 +65,9 @@ export const ScrumTimer = (): JSX.Element => {
 
         {scrumState === ScrumState.Running &&
           <Stack horizontalAlign="center">
-            <ProgressIndicator label={`Speaker ${speakerNumber + 1} Time Used`} percentComplete={currentSpeakerPercentTimeUsed} />
+            <StackItem styles={{root: {paddingBottom: 50}}}>
+              <ProgressIndicator label={`Speaker ${speakerNumber + 1}`} percentComplete={currentSpeakerPercentTimeUsed} styles={{root: {width: 450}}}/>
+            </StackItem>
             <Clock labelText="Team Time" displayedTime={teamElapsedTime} />
 
             <Stack horizontal tokens={{ childrenGap: 10, padding: 10 }}>
